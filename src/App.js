@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react";
 
-function App() {
+function AuthButtons() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {isLoggedIn ? (
+        <div>
+          <h2>Welcome</h2>
+          <button onClick={() => setIsLoggedIn(false)}>
+            Logout
+          </button>
+        </div>
+      ) : (
+        <div>
+          <h2>Please Login</h2>
+          <button onClick={() => setIsLoggedIn(true)}>
+            Login
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
-export default App;
+export default AuthButtons;
